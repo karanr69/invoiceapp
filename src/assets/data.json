@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "name": "Karan Singh",
+        "Address": "Incidunt et magni est ut.",
+        "mobile":"8237668273"
+    },
+    {
+        "id": 2,
+        "name": "Ram",
+        "Address": "A 26 Noida ",
+        "mobile":"9454397168"
+    },
+    {
+        "id": 1,
+        "name": "Sahil RAj",
+        "Address": "A -23 Kanpur",
+        "price": "170.00",
+        "mobile":"7264866503"
+    }
+]

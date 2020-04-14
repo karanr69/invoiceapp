@@ -1,0 +1,19 @@
+.img-card{
+    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+   position: relative;
+ 
+}
+
+.p-cot{
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 6.2rem;
+    background: linear-gradient(0deg,#000 0,transparent 100%);
+}
+.p-cot a{
+    color: #fff;
+    font-size: x-large;
+}

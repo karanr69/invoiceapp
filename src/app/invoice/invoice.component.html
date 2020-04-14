@@ -1,0 +1,240 @@
+<div class="container-fluid p-1 mt-100 mb-100 doNotPrint">
+	<div id="ui-view">
+		
+			<div class="card">
+				<div class="card-header  text-center">
+					<h5 class="mb-3 text-info">M/S : ABC Store</h5>
+					<div class="print-btn">
+						<a class="btn btn-sm btn-info mr-1" href="" (click)="print()" data-abc="true">
+							<i
+                                class="fa fa-print mr-1"></i> Print
+						</a>
+						<a class="btn btn-sm btn-info" href="#"
+                            data-abc="true">
+							<i class="fa fa-file-text-o mr-1"></i> Save
+						</a>
+					</div>
+					<p class="text-primary">
+						<strong>Invoice</strong>
+					</p>
+					<div class="row no-gutters">
+						<div class="col-4 mt-3">
+							<strong>Date:</strong>
+						</div>
+						<div class="col-8">
+							<mat-form-field>
+								<input matInput [matDatepicker]="picker" placeholder="">
+									<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+									<mat-datepicker #picker></mat-datepicker>
+								</mat-form-field>
+							</div>
+						</div>
+						
+							<div class="row mb-4">
+								<div class="col-4">
+									<span>
+										<strong>Sale type</strong>
+									</span>
+								</div>
+								<div class="col-8   mb-3">
+									<input type="checkbox" class="pull-left mt-1" ngModel #chkEnable>
+										<label class="ml-2 pull-left">Interstate</label>
+									</div>
+									<div class="col-4">
+										<strong> GSTIN# </strong>
+									</div>
+									<div class="col-8">
+										<input type="text" class="custom-inpt" [disabled]="!chkEnable.checked" />
+									</div>
+								</div>
+								<div class="row mb-2">
+									<div class="col-4">
+										<strong>Mobile No:</strong>
+									</div>
+									<div class="col-8">
+										<input type="text" name="mobileNo" #mobileNo class="custom-inpt"
+                                    (input)="fetchCustDetails(mobileNo.value)" autofocus />
+									</div>
+									<div class="col-4 mb-2 mt-2">
+										<strong>Name:</strong>
+									</div>
+									<div class="col-8 mt-2">
+										<input type="text" #custname name="name" class="custom-inpt" />
+									</div>
+									<div class="col-4">
+										<strong>Invoice No:</strong>
+									</div>
+									<div class="col-8"> 1</div>
+								</div>
+								<div class="row mb-4">
+									<div class="col-4">
+										<strong>Add:</strong>
+									</div>
+									<div class="col-8">
+										<input type="text" #custAddress name="address" class="custom-inpt" />
+									</div>
+								</div>
+								<div class="row mb-4">
+									<div class="col-12">
+										<div class="srch-box-cont">
+											<input class="search-input-box" type="text" #searchbox name="searchbox"
+                                        placeholder="search" value="{{audioText}}" />
+											<span class="mic-phone">
+												<i class="fa fa-microphone" [ngClass]="{'active': activeClass }"
+                                            aria-hidden="true" (click)="voiceTOText()"></i>
+											</span>
+											<span class="srch-icon">
+												<i class="fa fa-search" (click)="serachProduct(searchbox.value)"
+                                            aria-hidden="true"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+								<div class="mt-2 mb-10" *ngIf="show">
+									<div *ngFor="let item of listItem;let i = index">
+										<div class="row mb-2">
+											<div class="col-sm-5 mr-1">{{item.Desc}}</div>
+											<div class="col-sm-1 mr-1">Quantity 
+												<input type="number" value="1"
+                                            class="qty-{{i}}" />
+											</div>
+											<div class="col-sm-1">
+												<button (click)="addRow(item.id,i)"
+                                            class="btn btn-primary">add</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="table-responsive-sm">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th class="center">#</th>
+												<th class="left">Item</th>
+												<th class="left">Qty</th>
+												<th class="center">Rate</th>
+												<!--<th class="right">SGST</th>
+												<th class="right">CGST</th>
+												<th class="right">Total Tax</th>-->
+												<th class="right">Total</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr *ngFor="let item of itemArr;let i = index">
+												<td class="center">{{i+1}}</td>
+												<td class="left">{{item.Desc}}</td>
+												<td class="left Qty-{{item.id}}" contenteditable="true"
+                                            (focusout)="hide(item.id)">
+                                            {{item.qty}} </td>
+												<td class="center">{{item.qty*item.Price }}</td>
+												<!--<td class="right">{{item.qty*item.SGST }}</td>
+												<td class="right">{{item.qty*item.CGST }}</td>
+												<td class="right">{{ item.qty*(item.SGST+item.CGST )}}</td>-->
+												<td class="right">{{item.qty*(item.Price+item.SGST+item.CGST) }}</td>
+												<td class="right">
+													<i class="fa fa-trash delete-icon"
+                                                (click)="deleteRow(item.id)" aria-hidden="true"></i>
+													<i
+                                                class="fa fa-edit"></i>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="row" *ngIf="totalFlag">
+									<!-- <div class="col-lg-4 col-sm-5">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia.</div>-->
+									<div class="col-lg-4 col-sm-5 ml-auto">
+										<table class="table table-clear">
+											<tbody>
+												<tr>
+													<td class="left">
+														<strong>Subtotal</strong>
+													</td>
+													<td class="right">{{subTotal}}</td>
+												</tr>
+												<tr>
+													<td class="left">
+														<strong>Total Tax</strong>
+													</td>
+													<td class="right">{{totalTax}}</td>
+												</tr>
+												<tr>
+													<td class="left">
+														<strong>Total</strong>
+													</td>
+													<td class="right">
+														<strong>{{subTotal+totalTax}}</strong>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<div class="pull-right">
+											<a class="btn btn-sm btn-success" href="#" data-abc="true">
+												<i
+                                            class="fa fa-paper-plane mr-1"></i> Proceed to payment
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+					</div>
+				
+			</div>
+		</div>
+<div class="print">
+	<div class="prnt-row">
+		
+			<div class="prnt-col-1"><strong>GSTIN</strong>:XXXX</div>
+			<div class="prnt-col-1"><h5 class="text-info">Invoice</h5></div>
+            <div class="prnt-col-1">13/04/2020</div>
+	</div>
+	<div class="prnt-row">
+		<div class="prnt-col-2"><strong>Cashier</strong>:ksingh02</div>
+		<div class="prnt-col-2"><strong>Invioce no</strong>:1</div>
+	</div>
+	<div class="prnt-row">
+		<div class="prnt-col-2"><h5>ABC Store</h5></div>
+		<div class="prnt-col-2"><strong>Name</strong>:Karan Singh</div>
+	</div>
+	<div class="prnt-row">
+		<div class="prnt-col-2"><strong>Address</strong>:XYZ Sector M</div>
+		<div class="prnt-col-2"><strong>Address</strong>:XYZ Sector M</div>
+	</div>
+	
+	<div class="prnt-row">
+		<div class="prnt-col-2"><strong>Phone/Mobile</strong>:xxxxxxxxxx</div>
+		<div class="prnt-col-2"><strong>Phone/Mobile</strong>:xxxxxxxxxx</div>
+	</div>
+	<div class="table-responsive-sm">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th class="center">#</th>
+					<th class="left">Item</th>
+					<th class="left">Qty</th>
+					<th class="center">Rate</th>
+					<th class="right">SGST</th>
+					<th class="right">CGST</th>
+					<th class="right">Total Tax</th>
+					<th class="right">Total</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of itemArr;let i = index">
+					<td class="center">{{i+1}}</td>
+					<td class="left">{{item.Desc}}</td>
+					<td class="left " >
+				{{item.qty}} </td>
+					<td class="center">{{item.qty*item.Price }}</td>
+					<td class="right">{{item.qty*item.SGST }}</td>
+					<td class="right">{{item.qty*item.CGST }}</td>
+					<td class="right">{{ item.qty*(item.SGST+item.CGST )}}</td>
+					<td class="right">{{item.qty*(item.Price+item.SGST+item.CGST) }}</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+		

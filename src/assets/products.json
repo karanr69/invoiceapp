@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "Desc": "Colgate 200 gram",
+        "Price": 60,
+        "CGST":6,
+        "SGST":6
+        
+    },
+    {
+        "id": 2,
+        "Desc": "Lux 200 gram",
+        "Price": 80,
+        "CGST":8,
+        "SGST":8
+    },
+    {
+        "id": 3,
+        "Desc": "Pepsodent 200 gram",
+        "Price": 90,
+        "CGST":9,
+        "SGST":9
+    },
+    {
+        "id": 4,
+        "Desc": "Medimix 200 gram",
+        "Price": 80,
+        "CGST":8,
+        "SGST":8
+    },
+    {
+        "id": 5,
+        "Desc": "Medimix 100 gram",
+        "Price": 40,
+        "CGST":4,
+        "SGST":4
+    }
+]

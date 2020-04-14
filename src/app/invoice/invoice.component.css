@@ -1,0 +1,151 @@
+@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
+body {
+    background-color: blue;
+    font-family: 'Calibri', sans-serif !important
+}
+
+.mt-100 {
+    margin-top: 50px
+}
+
+.mb-100 {
+    margin-bottom: 50px
+}
+
+.card {
+    border-radius: 1px !important
+}
+
+.card-header {
+    background-color: #fff;
+    padding: 0.025 rem !important;
+}
+.card-body {
+  padding: 0;
+
+}
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0
+}
+
+.btn-sm,
+.btn-group-sm>.btn {
+    padding: .25rem .5rem;
+    font-size: .765625rem;
+    line-height: 1.5;
+    border-radius: .2rem
+}
+
+
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+
+  /*Search box*/
+  .search-input-box{
+      width: 100%;
+      border-radius: 5px;
+      border: 1px solid grey;
+      box-shadow: none;
+      position: relative;
+  }
+  .srch-box-cont{
+      position: relative;
+
+  }
+  .mic-phone{
+   position: absolute;
+   right: 50px;
+    color: dimgrey;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .srch-icon{
+      position: absolute;
+     cursor: pointer;
+    right: 10px;
+    color: dimgrey;
+    z-index: 1;
+
+  }
+  .print-btn{
+    position: absolute;
+    top: -45px;
+    right: 0;
+  }
+  .active{
+    color:red !important;
+}
+.delete-icon{
+  color: crimson;
+  font-size: medium;
+  cursor: pointer;
+}
+.custom-inpt{
+  border: 1px solid grey;
+  width: 90%;
+
+}
+
+@media screen{
+  .print{
+    display: none;
+  }
+}
+@media print{
+  .doNotPrint{display:none !important;}
+  
+
+  
+}
+.prnt-row{
+  content: "";
+  clear: both;
+  display: table;
+}
+[class*="prnt-col-"] {
+  float: left;
+ 
+}
+.prnt-col-1{
+  width:20.6rem;
+}
+.prnt-col-2{
+  width: 31rem;
+}
+
